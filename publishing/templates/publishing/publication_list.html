@@ -1,0 +1,19 @@
+{% extends "publishing/base.html" %}
+{% block content %}
+    <a class="article-title" href="publishing:publication-create.html">Add new</a>
+    {% for publication in publication_list %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ publication.author }}</a>
+              <small class="text-muted">{{ publication.date_inserted|date:"F d, Y"}}</small>
+            </div>
+              xxx {{ publication.get_absolute_url }} xxx
+            <h2><a class="article-title" href="{{ publication.get_absolute_url }}">{{ publication.title }}</a></h2>
+            <a class="article-title" href="{{ publication.get_absolute_url }}update">Edit</a>
+            <a class="article-title" href="{{ publication.get_absolute_url }}delete">Delete</a>
+            <p class="article-content">{{ publication.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
